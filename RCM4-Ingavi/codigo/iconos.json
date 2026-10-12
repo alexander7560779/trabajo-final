@@ -1,0 +1,113 @@
+{
+  "BATALLON DE TRANSPORTES.png": {
+    "file": "assets/iconos/BATALLON DE TRANSPORTES.png",
+    "width": 447,
+    "height": 447,
+    "viewBox": [
+      6,
+      110,
+      435,
+      227
+    ]
+  },
+  "CANCHA.png": {
+    "file": "assets/iconos/CANCHA.png",
+    "width": 360,
+    "height": 360,
+    "viewBox": [
+      7,
+      81,
+      350,
+      202
+    ]
+  },
+  "CEO.png": {
+    "file": "assets/iconos/CEO.png",
+    "width": 415,
+    "height": 739,
+    "viewBox": [
+      0,
+      163,
+      415,
+      414
+    ]
+  },
+  "COLICEO.png": {
+    "file": "assets/iconos/COLICEO.png",
+    "width": 1254,
+    "height": 1254,
+    "viewBox": [
+      79,
+      232,
+      1094,
+      797
+    ]
+  },
+  "COMANDO.png": {
+    "file": "assets/iconos/COMANDO.png",
+    "width": 406,
+    "height": 492,
+    "viewBox": [
+      40,
+      41,
+      325,
+      411
+    ]
+  },
+  "DRONES.png": {
+    "file": "assets/iconos/DRONES.png",
+    "width": 360,
+    "height": 361,
+    "viewBox": [
+      0,
+      0,
+      360,
+      361
+    ]
+  },
+  "ESCUELA DE IDIOMAS.png": {
+    "file": "assets/iconos/ESCUELA DE IDIOMAS.png",
+    "width": 447,
+    "height": 447,
+    "viewBox": [
+      64,
+      74,
+      321,
+      295
+    ]
+  },
+  "PREVENCION DE GUARDIA.png": {
+    "file": "assets/iconos/PREVENCION DE GUARDIA.png",
+    "width": 554,
+    "height": 554,
+    "viewBox": [
+      20,
+      17,
+      514,
+      520
+    ]
+  },
+  "VIVIENDAS.png": {
+    "file": "assets/iconos/VIVIENDAS.png",
+    "width": 447,
+    "height": 342,
+    "viewBox": [
+      0,
+      0,
+      447,
+      342
+    ]
+  },
+  "POLIGONO DE TIRO.png": {
+    "file": "assets/iconos/POLIGONO DE TIRO.png",
+    "width": 348,
+    "height": 348,
+    "viewBox": [
+      0,
+      0,
+      348,
+      348
+    ],
+    "round": true
+  }
+}

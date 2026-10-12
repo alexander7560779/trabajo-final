@@ -1,0 +1,68 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#163d36"><meta name="description" content="Sistema de orientación del RCM-4 Ingavi. Rutas a pie desde A con croquis, plano original e imagen satelital."><title>Ingavi · Rutas desde A</title><style>__CSS__</style></head>
+<body><a class="skip" href="#panel">Ir a los destinos</a>
+<main id="app">
+ <div id="mapStage" aria-label="Mapa interactivo del RCM-4 Ingavi">
+  <svg id="mapSvg" xmlns="http://www.w3.org/2000/svg" viewBox="150 15 960 730" role="group" aria-label="Croquis del recinto. Los marcadores A a J se pueden seleccionar.">
+   __MAP__
+   <g id="originalLayer" hidden><rect x="-2000" y="-2000" width="6000" height="6000" fill="#eff1ec"/><image x="185" y="40" width="865" height="680" href="__IMAGE__"/></g>
+   <g id="satelliteLayer" hidden><rect x="-5000" y="-5000" width="12000" height="12000" fill="#263c34"/><image id="satelliteImage" width="1600" height="1500" preserveAspectRatio="none"/></g>
+   <g id="routeLayer" hidden fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path id="routeHalo" stroke="#fff" stroke-width="17" vector-effect="non-scaling-stroke"/>
+    <path id="routeOutline" stroke="#694420" stroke-width="10" vector-effect="non-scaling-stroke"/>
+    <path id="routePath" stroke="#ff9f35" stroke-width="7" vector-effect="non-scaling-stroke"/>
+    <path id="routeFlow" class="route-flow" stroke="#fff7e6" stroke-width="2" stroke-dasharray="3 24" vector-effect="non-scaling-stroke"/>
+    <path id="stepHighlight" stroke="#008164" stroke-width="8" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g id="arrows" pointer-events="none"></g><g id="pins"></g>
+   <g id="walker" hidden pointer-events="none"><circle r="14" fill="#153e36" stroke="#fff" stroke-width="3"/><path d="M-4 5 0-7 4 5 0 2Z" fill="#fff"/></g>
+  </svg>
+ </div>
+ <header class="topbar">
+  <img class="header-logo" src="__LOGO__" alt="Emblema del RCM-4 Ingavi" width="56" height="56">
+  <h1 class="system-title">SISTEMA DE SEÑALÉTICA MULTIMEDIA Y DIGITAL PARA LA OPTIMIZACIÓN DE LA ORIENTACIÓN ESPACIAL EN EL <strong>RCM-4 «INGAVI»</strong> DEL MUNICIPIO DE LA CIUDAD DE EL ALTO</h1>
+  <img class="header-logo" src="__LOGO__" alt="" aria-hidden="true" width="56" height="56">
+ </header>
+ <div class="navigation-bar">
+  <button class="home-button" id="home" title="Reiniciar y escoger otra ruta"><span data-icon="home"></span><span>Inicio</span></button>
+  <form id="searchForm" class="searchbox" role="search"><span data-icon="search"></span><input id="search" type="search" placeholder="¿A dónde quieres ir?" aria-label="Buscar destino" autocomplete="off" aria-controls="destinationList"><button class="search-submit" type="submit" aria-label="Buscar destino"><span data-icon="arrow"></span></button></form>
+  <button id="fullscreen" class="iconbutton fullscreen" title="Pantalla completa" aria-label="Activar pantalla completa"><span data-icon="expand"></span></button>
+ </div>
+ <aside id="panel" class="panel" aria-label="Destinos e indicaciones">
+  <section id="directory">
+   <div class="panel-heading"><span class="eyebrow">EXPLORA EL RECINTO</span><h2>¿A dónde vamos?</h2><p>Selecciona un lugar. Te guiamos desde A.</p></div>
+   <div class="origin"><span class="letter start place-icon" data-place="A" aria-hidden="true"></span><div><small>PUNTO DE PARTIDA</small><strong>Inicio del recorrido</strong></div><span class="origin-dot"></span></div>
+   <div class="list-heading"><h2>Destinos</h2><span id="count">9 lugares</span></div>
+   <div id="destinationList" class="destination-list" role="list"></div>
+   <div class="panel-foot"><span data-icon="walk"></span> Recorridos a pie desde A</div>
+  </section>
+  <section id="routePanel" hidden>
+   <div class="route-heading"><button id="back" class="textbutton"><span data-icon="back"></span> Cambiar destino</button><div class="route-kicker"><span class="letter start small place-icon" data-place="A" aria-hidden="true"></span><span data-icon="arrow"></span><span id="destinationBadge" class="letter finish small place-icon" aria-hidden="true"></span><span>A PIE</span></div><h1 id="destinationName"></h1><div class="route-metrics"><div><strong id="eta"></strong><span>a pie · estimado</span></div><div><strong id="distance"></strong><span>distancia del plano</span></div></div></div>
+   <div class="route-actions"><button id="guide" class="primary"><span data-icon="play"></span><span>Iniciar guía</span></button><button id="listen" class="iconbutton" title="Reproducir audio y seguir los tramos" aria-label="Reproducir audio y seguir los tramos" aria-pressed="false"><span data-icon="volume"></span></button></div>
+   <div class="guide-heading"><h2 id="guideHeadingTitle">Tu recorrido, paso a paso</h2><button id="stopAudio" class="textbutton" hidden><span data-icon="stop"></span>Detener audio</button><button id="toggleSteps" class="textbutton" aria-expanded="true" aria-controls="steps">Ocultar</button></div>
+   <ol id="steps" class="steps"></ol>
+   <div class="guide-nav" id="guideNav" hidden><button id="previousStep" class="iconbutton" aria-label="Paso anterior"><span data-icon="back"></span></button><div><span id="stepCounter"></span><small>Vista guiada del recorrido</small></div><button id="nextStep" class="primary">Siguiente <span data-icon="arrow"></span></button></div>
+   <div class="route-options"><label for="speed">Ritmo a pie</label><select id="speed"><option value="3">Tranquilo · 3 km/h</option><option value="4">Medio · 4 km/h</option><option value="5">Rápido · 5 km/h</option></select><button id="print" class="textbutton" title="Imprimir la ruta"><span data-icon="print"></span> Imprimir</button></div>
+   <div class="panel-foot">Ruta orientativa trazada sobre el plano.</div>
+  </section>
+ </aside>
+ <button id="panelToggle" class="panel-toggle" aria-label="Ocultar panel" title="Mostrar u ocultar indicaciones"><span data-icon="back"></span></button>
+ <div class="map-dock">
+  <div class="map-controls" role="group" aria-label="Controles del mapa"><button id="zoomIn" class="iconbutton" title="Acercar" aria-label="Acercar el mapa"><span data-icon="plus"></span></button><button id="zoomOut" class="iconbutton" title="Alejar" aria-label="Alejar el mapa"><span data-icon="minus"></span></button><button id="fit" class="iconbutton" title="Ver recorrido completo" aria-label="Encajar el recorrido en pantalla"><span data-icon="focus"></span></button></div>
+  <div class="layer-switch" role="group" aria-label="Seleccionar vista del mapa">
+   <button id="showSketch" class="selected" aria-pressed="true" title="Ver croquis"><span class="view-thumb thumb-sketch" aria-hidden="true"><span data-icon="map"></span></span><span>Croquis</span><span class="view-check" aria-hidden="true">✓</span></button>
+   <button id="showOriginal" aria-pressed="false" title="Ver plano original"><span class="view-thumb thumb-plan" aria-hidden="true"><span data-icon="plan"></span></span><span>Plano original</span><span class="view-check" aria-hidden="true">✓</span></button>
+   <button id="showSatellite" aria-pressed="false" title="Ver imagen satelital · requiere internet"><span class="view-thumb thumb-satellite" aria-hidden="true"><span data-icon="satellite"></span></span><span>Satelital</span><span class="view-check" aria-hidden="true">✓</span></button>
+  </div>
+ </div>
+ <div id="satelliteNotice" class="satellite-notice" role="status" hidden><span data-icon="satellite"></span><span id="satelliteMessage">Cargando imagen satelital…</span><button id="retrySatellite" class="textbutton" hidden>Reintentar</button></div>
+ <div id="satelliteCredit" class="satellite-credit" hidden>Imagen: <a href="https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9" target="_blank" rel="noopener noreferrer">Esri, Vantor, Earthstar Geographics, GIS User Community</a></div>
+ <div id="arrival" class="arrival" hidden><span class="arrival-check">✓</span><div><strong>Este es tu destino</strong><small id="arrivalName"></small></div><button id="closeArrival" class="iconbutton" aria-label="Cerrar llegada"><span data-icon="close"></span></button></div>
+ <div class="bottom-bar"><div class="map-caption"><span class="route-swatch"></span><span id="legendText">Selecciona un destino</span><button id="about" class="about" aria-label="Información del croquis">i</button></div></div>
+ <div class="map-hint" id="mapHint">Arrastra para mover · Usa + / − para acercar</div>
+ <div id="status" class="sr-only" role="status" aria-live="polite"></div><div id="toast" class="toast" role="status"></div>
+</main>
+<dialog id="infoDialog"><button id="closeInfo" class="iconbutton dialog-close" aria-label="Cerrar información"><span data-icon="close"></span></button><span class="eyebrow">ACERCA DE ESTE CROQUIS</span><h2>El plano, más fácil de recorrer.</h2><p>El punto <strong>A</strong> es el inicio de todos los recorridos. Las letras B a J corresponden a los destinos de la lámina original.</p><p>Los caminos y las indicaciones se digitalizaron visualmente a partir de <strong>HUAYHUA 2.pdf, lámina 2</strong>. Son una guía orientativa pendiente de validación en el recinto; los accesos exactos pueden requerir ajuste.</p><p>Las distancias totales se transcribieron del plano. Los tiempos se calculan con el ritmo elegido: <strong>tiempo = distancia ÷ velocidad</strong>. Las dimensiones del croquis no se utilizan para medir distancias.</p><p><strong>Tres vistas, un mismo recorrido.</strong> Croquis y plano original funcionan sin conexión. Satelital consulta imágenes de Esri World Imagery por internet; no es una transmisión en vivo. Su alineación con la lámina es visual y aproximada, y debe verificarse en el recinto. La ruta sigue la geometría del plano y no detecta obstáculos en la imagen.</p><p>La guía manual avanza con los botones. Al reproducir el audio, cada tramo se enfoca cuando comienza su indicación y pasa al siguiente al terminar de leerla. Detener el audio, usar un paso manual o cambiar de destino cancela ese avance automático.</p><p>La vista guiada muestra los pasos del recorrido. No utiliza GPS ni detecta tu posición.</p><button id="closeInfoBottom" class="primary">Entendido</button></dialog>
+<noscript>Activa JavaScript en el navegador para consultar las rutas del recinto.</noscript>
+<script>const MARKER_ASSETS=__MARKER_ASSETS__;
+__DATA__
+__ICONOS__</script><script>const SATELLITE=__SATELLITE__;const INITIAL_DESTINATION=__INITIAL__;__JS__</script></body></html>

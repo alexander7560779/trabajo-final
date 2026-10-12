@@ -1,0 +1,96 @@
+{
+  "service": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+  "bbox": [
+    -68.176,
+    -16.53403125,
+    -68.161,
+    -16.51996875
+  ],
+  "imageSize": [
+    1600,
+    1500
+  ],
+  "imageToPlan": [
+    0.3026865591289065,
+    1.1055828243895458,
+    -1.1561191466574208,
+    0.3799149565311962,
+    1279.4540251301182,
+    -909.7561814429135
+  ],
+  "controlPoints": [
+    {
+      "plan": [
+        603.24,
+        262.16
+      ],
+      "image": [
+        790,
+        788
+      ]
+    },
+    {
+      "plan": [
+        724.49,
+        266.51
+      ],
+      "image": [
+        823,
+        696
+      ]
+    },
+    {
+      "plan": [
+        600.34,
+        339.44
+      ],
+      "image": [
+        854,
+        810
+      ]
+    },
+    {
+      "plan": [
+        720.15,
+        343.31
+      ],
+      "image": [
+        886,
+        715
+      ]
+    },
+    {
+      "plan": [
+        984.3,
+        227.4
+      ],
+      "image": [
+        863,
+        484
+      ]
+    },
+    {
+      "plan": [
+        280.5,
+        319.0
+      ],
+      "image": [
+        746,
+        1062
+      ]
+    },
+    {
+      "plan": [
+        1029.0,
+        69.0
+      ],
+      "image": [
+        744,
+        411
+      ]
+    }
+  ],
+  "residualPixels": 2.427762966766918,
+  "notice": "Alineación visual aproximada con el plano HUAYHUA 2. No es un levantamiento georreferenciado ni usa GPS.",
+  "credits": "Esri, Vantor, Earthstar Geographics, and the GIS User Community"
+}
